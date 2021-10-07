@@ -3,10 +3,8 @@ const categoryList = (categories) =>{
   return list.reduce((out, category) =>`${out}<option value=${category}>${category}</option>`,'');
 }
 
-
-
-export const todoForm = (categories) => {
-  return `
+export const getFormElements = (categories, modal) => {
+  modal.insertAdjacentHTML('beforeend',`
     <form class="todo_form">
       <label for="category">Select category</label>
       <select id="category" name="category"autofocus>
@@ -21,5 +19,13 @@ export const todoForm = (categories) => {
 
       <button>Send</button>
     </form>
-  `
+  `);
+
+  return [
+    modal.querySelector('form'),
+    modal.querySelector('select'),
+    modal.querySelector('input'),
+    modal.querySelector('textarea'),
+    modal.querySelector('button'),
+  ]
 }
