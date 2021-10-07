@@ -4,27 +4,29 @@ export const todos = [
     created: '',
     category: 'Task',
     content: 'Tomatoes, bread',
-    dates: 'fas fa-head-side-virus',
+    dates: '',
+    archived: false,
   },
   {
     name: 'New Feature',
     created: '',
     category: 'Idea',
     content: '',
-    dates: 'fas fa-exclamation-circle',
+    dates: '',
+    archived: false,
   },
   {
     name: 'Books',
     created: '',
-    category: 'Task',
+    category: 'Random Thought',
     content: 'The theory of evolut',
-    dates: 'fas fa-laptop-code',
+    dates: '',
+    archived: false,
   },
 ]
 
 export const categories = {
-  Task: '',
-  'Random Thought': '',
-  Idea: '',
-  Quote: '',
+  Task: 'fas fa-head-side-virus',
+  'Random Thought': 'fas fa-exclamation-circle',
+  Idea: 'fas fa-laptop-code',
 }

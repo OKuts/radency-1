@@ -1,23 +1,4 @@
-import {openTodos} from "./elements";
-import {todos} from "../../data/data";
-
-const getTodos = () => todos.reduce((out, todo, i) =>
-    `${out} <tr>
-          <td class='todo_name'><i class='${todo.dates} circle'></i>${todo.name}</td>
-          <td>${todo.name}</td>
-          <td>${todo.name}</td>
-          <td>${todo.category}</td>
-          <td>${todo.content}</td>
-          <td class='icons'>
-            <i class="fas fa-pen click_icons"></i>
-            <i class="far fa-file-archive click_icons"></i>
-            <i class="far fa-trash-alt click_icons"></i>
-          </td>
-        </tr>
-    `, '');
-
-
-export const showOpenTodo = () => {
+export const showOpenTodo = (todos, categories, openTodos) => {
   const header = `
         <tr>
           <th>icon</th>
@@ -31,7 +12,24 @@ export const showOpenTodo = () => {
           </th>
         </th>
   `;
-  openTodos.innerHTML = `<table class='todo_table'>${header + getTodos()}</table>`;
-  openTodos.insertAdjacentHTML('beforeend','<button>Create note</button>');
+
+  const todosElements = todos.reduce((out, todo, i) =>
+    `${out} <tr data-key='${i}'>
+          <td class='todo_name'><i class='${categories[todo.category]} circle'></i>${todo.name}</td>
+          <td>${todo.name}</td>
+          <td>${todo.name}</td>
+          <td>${todo.category}</td>
+          <td>${todo.content}</td>
+          <td class='icons'>
+            <i data-id="edit" class="fas fa-pen click_icons"></i>
+            <i data-id="archive" class="far fa-file-archive click_icons"></i>
+            <i data-id="delete" class="far fa-trash-alt click_icons"></i>
+          </td>
+        </tr>
+    `, '');
+
+  openTodos.innerHTML = `<table class='todo_table'>${header + todosElements}</table>`;
+  openTodos.insertAdjacentHTML('beforeend','<button type="button" data-id="create">Create note</button>');
+
   return [openTodos.querySelectorAll('tr'), openTodos.querySelector('button')];
-}
+};

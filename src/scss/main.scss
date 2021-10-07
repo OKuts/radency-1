@@ -1,6 +1,15 @@
-.todos_wrapper {
+@import "reset";
+@import "editForm";
+@import "modal";
+
+.app_wrapper {
   max-width: 980px;
+  height: 100vh;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 
 #openTodos {
@@ -75,3 +84,4 @@
     }
   }
 }
+
