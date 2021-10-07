@@ -1,0 +1,77 @@
+.todos_wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+#openTodos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  & button {
+    width: 8rem;
+    color: darkgray;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.todo_table {
+  width: 100%;
+  height: 2rem;
+  border-spacing: 0 11px;
+
+  & i.click_icons:hover {
+    color: black;
+    transform: scale(1.5);
+  }
+
+  & th {
+    background: darkgray;
+    padding: 0.5rem;
+    color: white;
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    & i {
+      margin-right: 0.5rem;
+    }
+  }
+  & td {
+    background: lightgray;
+    padding: 0.5rem;
+    color:darkgray;
+    font-weight: bolder;
+
+    &.icons {
+      text-align: right;
+    }
+
+    & i {
+      margin-right: 0.5rem;
+
+      &.circle {
+        background: darkgray;
+        color: white;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &.todo_name {
+      color: black;
+    }
+  }
+}
