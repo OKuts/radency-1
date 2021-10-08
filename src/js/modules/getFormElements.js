@@ -21,11 +21,11 @@ export const getFormElements = (categories, modal) => {
     </form>
   `);
 
-  return [
-    modal.querySelector('form'),
-    modal.querySelector('select'),
-    modal.querySelector('input'),
-    modal.querySelector('textarea'),
-    modal.querySelector('button'),
-  ]
+  return {
+    editForm: modal.querySelector('form'),
+    category: modal.querySelector('select'),
+    name: modal.querySelector('input'),
+    content: modal.querySelector('textarea'),
+    formBtn: modal.querySelector('button'),
+  }
 }

@@ -3,12 +3,12 @@
 @import "modal";
 
 .app_wrapper {
-  max-width: 980px;
-  height: 100vh;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0 auto;
+  height: 100vh;
+  max-width: 980px;
   font-family: Arial, sans-serif;
 }
 
@@ -28,9 +28,9 @@
 }
 
 .todo_table {
+  border-spacing: 0 11px;
   width: 100%;
   height: 2rem;
-  border-spacing: 0 11px;
 
   & i.click_icons:hover {
     color: black;
@@ -38,48 +38,54 @@
   }
 
   & th {
-    background: darkgray;
     padding: 0.5rem;
-    color: white;
     text-align: left;
-
-    &:first-child {
-      border-radius: 5px 0 0 5px;
-      text-align: center;
-    }
-
-    &:last-child {
-      border-radius: 0 5px 5px 0;
-      text-align: right;
-    }
+    color: white;
+    background: darkgray;
+    line-height: 1.7;
 
     & i {
       margin-right: 0.5rem;
     }
-  }
-  & td {
-    background: lightgray;
-    padding: 0.5rem;
-    color:darkgray;
-    font-weight: bolder;
 
-    &.icons {
-      text-align: right;
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+
+  & td {
+    padding: 0.5rem;
+    font-weight: bolder;
+    color: darkgray;
+    background: lightgray;
+    overflow: hidden;
+    line-height: 1.7;
+
+    &:first-child {
+      text-align: center;
     }
 
     & i {
       margin-right: 0.5rem;
 
       &.circle {
-        background: darkgray;
-        color: white;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
         width: 2rem;
         height: 2rem;
-        border-radius: 50%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+        color: white;
+        background: darkgray;
       }
+    }
+
+    &.icons {
+      text-align: right;
     }
 
     &.todo_name {
@@ -87,4 +93,3 @@
     }
   }
 }
-
