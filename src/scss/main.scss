@@ -49,7 +49,6 @@
 
     &:first-child {
       border-radius: 5px 0 0 5px;
-      text-align: center;
     }
 
     &:last-child {
@@ -62,6 +61,11 @@
     font-weight: bolder;
     color: darkgray;
     background: lightgray;
+    overflow: hidden;
+
+    &:first-child {
+      text-align: center;
+    }
 
     & i {
       margin-right: 0.5rem;

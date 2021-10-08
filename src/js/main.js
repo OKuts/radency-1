@@ -15,6 +15,10 @@ const state = {
 };
 
 let [openTodosList, createBtn] = showOpenTodo(todos, categories, openTodosWrap, dateFormat, state.activeOnly);
+modal.addEventListener('click', () => changeShowModal(modal, 'remove'));
+state.elements.editForm.addEventListener('click', e => e.stopPropagation());
+state.elements.formBtn.addEventListener('click', e =>
+  changeTodo(e, modal, changeShowModal, state.elements, todos, update));
 
 const update = (archived = false) => {
   [openTodosList, createBtn] = showOpenTodo(todos, categories, openTodosWrap, dateFormat, state.activeOnly);
@@ -22,17 +26,12 @@ const update = (archived = false) => {
   state.selectionsList = showStatistics(state.statistics, statisticsWrap);
   openTodosList.forEach(item => item.addEventListener('click', selectAction));
   createBtn.addEventListener('click', selectAction);
-  state.selectionsList.forEach(item => item.addEventListener('click', selectAction));
-  modal.addEventListener('click', () => changeShowModal(modal, 'remove'));
-  state.elements.editForm.addEventListener('click', e => e.stopPropagation());
-  state.elements.formBtn.addEventListener('click', e =>
-    changeTodo(e, modal, changeShowModal, state.elements, todos, update));
 }
 
 const selectAction = (e) => {
   const action = e.target.dataset.id;
-  const num = +e.currentTarget.dataset.key;
-  console.log(action)
+  let num = +e.currentTarget.dataset.key;
+  console.log(num, action)
   switch (action) {
     case 'delete':
       todos.splice(num, 1);
@@ -63,7 +62,13 @@ const selectAction = (e) => {
       break;
 
     case 'create':
+      modal.dataset.num = String(todos.length);
       changeShowModal(modal, 'add');
+      break;
+
+    case 'extract':
+      todos[num].active = true;
+      update();
       break;
   }
 }
