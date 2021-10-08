@@ -26,12 +26,12 @@ const update = (archived = false) => {
   state.selectionsList = showStatistics(state.statistics, statisticsWrap);
   openTodosList.forEach(item => item.addEventListener('click', selectAction));
   createBtn.addEventListener('click', selectAction);
+  modal.dataset.num = '';
 }
 
 const selectAction = (e) => {
   const action = e.target.dataset.id;
   let num = +e.currentTarget.dataset.key;
-  console.log(num, action)
   switch (action) {
     case 'delete':
       todos.splice(num, 1);
@@ -62,7 +62,6 @@ const selectAction = (e) => {
       break;
 
     case 'create':
-      modal.dataset.num = String(todos.length);
       changeShowModal(modal, 'add');
       break;
 

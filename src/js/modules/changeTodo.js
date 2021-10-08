@@ -3,17 +3,21 @@ import {todos} from "../../data/data";
 export const changeTodo = (e, modal, changeShowModal, { category, name, content }, todos, update) => {
   e.stopPropagation();
   e.preventDefault();
-  if (Number(modal.dataset.num) >= 0) {
-    todos.push({
-      name: name.value,
-      created: Date.now(),
-      category: category.value,
-      content: content.value,
-      dates: [],
-      active: true,
-    });
-    console.log(todos)
-    update();
+  const num = +modal.dataset.num;
+  const todo = {
+    name: name.value,
+    category: category.value,
+    content: content.value,
   }
+  if (!modal.dataset.num) {
+    todos.push({
+      ...todo,
+      created: Date.now(),
+      active: true,
+    })
+  } else {
+    todos[num] = { ...todos[num], ...todo}
+  }
+  update();
   changeShowModal(modal, 'remove');
 }
