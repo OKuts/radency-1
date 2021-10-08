@@ -1,27 +1,24 @@
 export const todos = [
   {
     name: 'Shoping list',
-    created: '',
+    created: 1633670000000,
     category: 'Task',
     content: 'Tomatoes, bread',
-    dates: '',
     active: true,
   },
   {
     name: 'New Feature',
-    created: '',
+    created: 1633670060000,
     category: 'Idea',
     content: '',
-    dates: '',
-    active: true,
+    active: false,
   },
   {
     name: 'Books',
-    created: '',
+    created: 1633670066048,
     category: 'Random_Thought',
-    content: 'The theory of evolut',
-    dates: '',
-    active: false,
+    content: 'The theory of evolut 1/08/2021y and 22/5/2015',
+    active: true,
   },
 ]
 

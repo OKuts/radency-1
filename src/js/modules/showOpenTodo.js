@@ -1,4 +1,10 @@
-export const showOpenTodo = (todos, categories, openTodos) => {
+export const showOpenTodo = (todos, categories, openTodos, dateFormat, activeOnly) => {
+  console.log(activeOnly);
+  const extractDates = (content) => {
+    const arr = Array.from(content.matchAll(/(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}/gm));
+    return arr.map(item => item[0]).join('\n');
+  }
+
   const header = `
         <tr <tr data-key='-1'>
           <th>Name</th>
@@ -7,24 +13,30 @@ export const showOpenTodo = (todos, categories, openTodos) => {
           <th>Content</th>
           <th>Dates</th>
           <th style='text-align: right'>
-            <i data-id="archiveAll" class="far fa-file-archive click_icons"></i>
+            <i data-id="showAll" class="fas fa-tasks click_icons"></i>
             <i data-id="deleteAll" class="far fa-trash-alt click_icons"></i>
           </th>
         </th>
   `;
 
+  const getIcons = (flag) => {
+    return flag
+      ? `<i data-id="edit" class="fas fa-pen click_icons"></i>
+         <i data-id="archive" class="far fa-file-archive click_icons"></i>
+         <i data-id="delete" class="far fa-trash-alt click_icons"></i>`
+      : '<i data-id="edit" class="fas fa-upload click_icons"></i>'
+  }
+
   const todosElements = todos.reduce((out, todo, i) =>
-    todo.active
+    todo.active || !activeOnly
       ? `${out} <tr data-key='${i}'>
           <td class='todo_name'><i class='${categories[todo.category].icon} circle'></i>${todo.name}</td>
-          <td></td>
+          <td>${dateFormat(todo.created)}</td>
           <td>${todo.category}</td>
           <td>${todo.content}</td>
-          <td></td>
+          <td>${extractDates(todo.content)}</td>
           <td class='icons'>
-            <i data-id="edit" class="fas fa-pen click_icons"></i>
-            <i data-id="archive" class="far fa-file-archive click_icons"></i>
-            <i data-id="delete" class="far fa-trash-alt click_icons"></i>
+          ${getIcons(todo.active)}
           </td>
         </tr>
     `
