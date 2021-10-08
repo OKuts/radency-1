@@ -5,7 +5,7 @@ export const todos = [
     category: 'Task',
     content: 'Tomatoes, bread',
     dates: '',
-    archived: false,
+    active: true,
   },
   {
     name: 'New Feature',
@@ -13,7 +13,7 @@ export const todos = [
     category: 'Idea',
     content: '',
     dates: '',
-    archived: false,
+    active: true,
   },
   {
     name: 'Books',
@@ -21,12 +21,24 @@ export const todos = [
     category: 'Random_Thought',
     content: 'The theory of evolut',
     dates: '',
-    archived: false,
+    active: false,
   },
 ]
 
 export const categories = {
-  Task: 'fas fa-head-side-virus',
-  Random_Thought: 'fas fa-exclamation-circle',
-  Idea: 'fas fa-laptop-code',
+  Task: {
+    icon: 'fas fa-head-side-virus',
+    total: 0,
+    active: 0,
+  },
+  Random_Thought: {
+    icon: 'fas fa-exclamation-circle',
+    total: 0,
+    active: 0,
+  },
+  Idea: {
+    icon: 'fas fa-laptop-code',
+    total: 0,
+    active: 0,
+  },
 }

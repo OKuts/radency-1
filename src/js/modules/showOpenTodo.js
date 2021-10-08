@@ -6,7 +6,7 @@ export const showOpenTodo = (todos, categories, openTodos) => {
           <th>Category</th>
           <th>Content</th>
           <th>Dates</th>
-          <th>
+          <th style='text-align: right'>
             <i data-id="archiveAll" class="far fa-file-archive click_icons"></i>
             <i data-id="deleteAll" class="far fa-trash-alt click_icons"></i>
           </th>
@@ -14,8 +14,9 @@ export const showOpenTodo = (todos, categories, openTodos) => {
   `;
 
   const todosElements = todos.reduce((out, todo, i) =>
-    `${out} <tr data-key='${i}'>
-          <td class='todo_name'><i class='${categories[todo.category]} circle'></i>${todo.name}</td>
+    todo.active
+      ? `${out} <tr data-key='${i}'>
+          <td class='todo_name'><i class='${categories[todo.category].icon} circle'></i>${todo.name}</td>
           <td></td>
           <td>${todo.category}</td>
           <td>${todo.content}</td>
@@ -26,7 +27,9 @@ export const showOpenTodo = (todos, categories, openTodos) => {
             <i data-id="delete" class="far fa-trash-alt click_icons"></i>
           </td>
         </tr>
-    `, '');
+    `
+    : out
+    , '');
 
   openTodos.innerHTML = `<table class='todo_table'>${header + todosElements}</table>`;
   openTodos.insertAdjacentHTML('beforeend','<button type="button" data-id="create">Create note</button>');

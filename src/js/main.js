@@ -6,16 +6,17 @@ import {modal, openTodosWrap, statisticsWrap} from "./modules/elements";
 import {getFormElements} from "./modules/getFormElements";
 import {changeShowModal} from "./modules/changeShowModal";
 import {changeTodo} from "./modules/changeTodo";
+import {initStatistics} from "./modules/initStatistics";
 
 let [openTodosList, createBtn] = showOpenTodo(todos, categories, openTodosWrap);
-const selectionsList = showStatistics(todos, categories, statisticsWrap);
+let statistics =  initStatistics(todos, categories);
+let selectionsList = showStatistics(statistics, statisticsWrap);
 const [editForm, category, name, content, formBtn ] = getFormElements(categories, modal);
 
-console.log(category);
 const selectAction = (e) => {
   const action = e.target.dataset.id;
   const num = +e.currentTarget.dataset.key;
-
+  console.log(action)
   switch (action) {
     case 'delete':
       todos.splice(num, 1);
@@ -37,8 +38,12 @@ const selectAction = (e) => {
       [openTodosList, createBtn] = showOpenTodo(todos, categories, openTodosWrap);
       break;
 
-
-
+    case 'archive':
+      todos[num].active = false;
+      [openTodosList, createBtn] = showOpenTodo(todos, categories, openTodosWrap);
+      statistics =  initStatistics(todos, categories);
+      selectionsList = showStatistics(statistics, statisticsWrap);
+      break;
   }
 }
 
