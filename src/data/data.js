@@ -18,7 +18,7 @@ export const todos = [
   {
     name: 'Books',
     created: '',
-    category: 'Random Thought',
+    category: 'Random_Thought',
     content: 'The theory of evolut',
     dates: '',
     archived: false,
@@ -27,6 +27,6 @@ export const todos = [
 
 export const categories = {
   Task: 'fas fa-head-side-virus',
-  'Random Thought': 'fas fa-exclamation-circle',
+  Random_Thought: 'fas fa-exclamation-circle',
   Idea: 'fas fa-laptop-code',
 }
