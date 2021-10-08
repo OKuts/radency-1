@@ -1,6 +1,15 @@
-.todos_wrapper {
+@import "reset";
+@import "editForm";
+@import "modal";
+
+.app_wrapper {
   max-width: 980px;
+  height: 100vh;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
 }
 
 #openTodos {
@@ -32,13 +41,16 @@
     background: darkgray;
     padding: 0.5rem;
     color: white;
+    text-align: left;
 
     &:first-child {
       border-radius: 5px 0 0 5px;
+      text-align: center;
     }
 
     &:last-child {
       border-radius: 0 5px 5px 0;
+      text-align: right;
     }
 
     & i {
@@ -75,3 +87,4 @@
     }
   }
 }
+
