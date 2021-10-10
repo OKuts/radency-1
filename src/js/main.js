@@ -20,6 +20,7 @@ state.elements.editForm.addEventListener('click', e => e.stopPropagation());
 state.elements.formBtn.addEventListener('click', e =>
   changeTodo(e, modal, changeShowModal, state.elements, todos, update));
 
+
 const update = (archived = false) => {
   [openTodosList, createBtn] = showOpenTodo(todos, categories, openTodosWrap, dateFormat, state.activeOnly);
   state.statistics =  initStatistics(todos, categories);

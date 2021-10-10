@@ -13,8 +13,8 @@ export const showOpenTodo = (todos, categories, openTodos, dateFormat, activeOnl
           <th>Content</th>
           <th>Dates</th>
           <th style='text-align: right'>
-            <i data-id="showAll" class="fas fa-tasks click_icons"></i>
-            <i data-id="deleteAll" class="far fa-trash-alt click_icons"></i>
+            <i data-id="showAll" class="fas fa-tasks click_icons" hint="all/active"></i>
+            <i data-id="deleteAll" class="far fa-trash-alt click_icons" hint="remove all"></i>
           </th>
         </th>
   `;
