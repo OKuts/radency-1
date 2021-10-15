@@ -11,10 +11,14 @@ export const getFormElements = (categories, modal) => {
         ${categoryList(categories)}
       </select>
 
-      <label for="name">Todo's name</label>
+      <label for="name">Todo's name
+        <span id="nameError">* No valid</span>
+      </label>
       <input id="name" name="name" type="text"/>
 
-      <label for="content">Content</label>
+      <label for="content">Content
+        <span id="contentError">* No valid</span>
+      </label>
       <textarea id="content" name="content" type="text"></textarea>
 
       <button>Send</button>

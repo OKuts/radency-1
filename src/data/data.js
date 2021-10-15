@@ -1,5 +1,6 @@
 export const todos = [
   {
+    id: 1,
     name: 'Shoping list',
     created: 1633670000000,
     category: 'Task',
@@ -7,6 +8,7 @@ export const todos = [
     active: true,
   },
   {
+    id: 2,
     name: 'New Feature',
     created: 1633000060000,
     category: 'Idea',
@@ -14,13 +16,15 @@ export const todos = [
     active: false,
   },
   {
-    name: 'Books',
+    id: 3,
+    name: 'Books and note',
     created: 1630000066048,
     category: 'Random_Thought',
     content: 'The theory of evolut 1/08/2021y and 22/5/2015',
     active: true,
   },
   {
+    id: 4,
     name: 'Shoping list',
     created: 1633670000000,
     category: 'Task',
@@ -28,6 +32,7 @@ export const todos = [
     active: true,
   },
   {
+    id: 5,
     name: 'Sometimes',
     created: 1633000060000,
     category: 'Idea',
@@ -35,13 +40,15 @@ export const todos = [
     active: false,
   },
   {
-    name: 'Books',
+    id: 6,
+    name: 'Books white',
     created: 1630000066048,
     category: 'Random_Thought',
     content: 'The theory of evolut 1/08/2021y and 22/5/2015',
     active: true,
   },
   {
+    id: 7,
     name: 'Mashine',
     created: 1630000066048,
     category: 'Random_Thought',

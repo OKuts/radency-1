@@ -29,7 +29,7 @@ export const showOpenTodo = (todos, categories, openTodos, dateFormat, activeOnl
 
   const todosElements = todos.reduce((out, todo, i) =>
     todo.active || !activeOnly
-      ? `${out} <tr data-key='${i}'>
+      ? `${out} <tr data-key='${todo.id}'>
           <td><i class='${categories[todo.category].icon} circle'></i></td>
           <td class='todo_name'>${todo.name}</td>
           <td>${dateFormat(todo.created)}</td>

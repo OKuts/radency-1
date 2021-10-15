@@ -1,10 +1,9 @@
-import {todos} from "../../data/data";
-
-export const changeTodo = (e, modal, changeShowModal, { category, name, content }, todos, update) => {
+export const changeTodo = (e, modal, changeShowModal, { category, name, content }, todos, update, getMaxId) => {
   e.stopPropagation();
   e.preventDefault();
   const num = +modal.dataset.num;
   const todo = {
+    id: num ? todos[num].id : getMaxId(todos) + 1,
     name: name.value,
     category: category.value,
     content: content.value,

@@ -1,13 +1,16 @@
 import '../scss/main.scss';
-import {showOpenTodo} from "./modules/showOpenTodo";
-import {showStatistics} from "./modules/showStatistics";
-import {categories, todos} from "../data/data";
-import {modal, openTodosWrap, statisticsWrap} from "./modules/elements";
-import {getFormElements} from "./modules/getFormElements";
-import {changeShowModal} from "./modules/changeShowModal";
-import {changeTodo} from "./modules/changeTodo";
-import {initStatistics} from "./modules/initStatistics";
-import {dateFormat} from "./modules/dateFormat";
+import {showOpenTodo} from './modules/showOpenTodo';
+import {showStatistics} from './modules/showStatistics';
+import {categories, todos} from '../data/data';
+import {modal, openTodosWrap, statisticsWrap} from './modules/elements';
+import {getFormElements} from './modules/getFormElements';
+import {changeShowModal} from './modules/changeShowModal';
+import {changeTodo} from './modules/changeTodo';
+import {initStatistics} from './modules/initStatistics';
+import {dateFormat} from './modules/dateFormat';
+import {validData} from './modules/validData';
+import {searchTodo} from './modules/searchTodo';
+import {getMaxId} from './modules/getMaxId';
 
 const state = {
   activeOnly: true,
@@ -18,7 +21,11 @@ let [openTodosList, createBtn] = showOpenTodo(todos, categories, openTodosWrap, 
 modal.addEventListener('click', () => changeShowModal(modal, 'remove'));
 state.elements.editForm.addEventListener('click', e => e.stopPropagation());
 state.elements.formBtn.addEventListener('click', e =>
-  changeTodo(e, modal, changeShowModal, state.elements, todos, update));
+  changeTodo(e, modal, changeShowModal, state.elements, todos, update, getMaxId));
+state.elements.name.addEventListener('input',  () =>
+  validData(state.elements.formBtn, state.elements.name, state.elements.content));
+state.elements.content.addEventListener('input',  () =>
+  validData(state.elements.formBtn, state.elements.name, state.elements.content));
 
 
 const update = (archived = false) => {
@@ -32,8 +39,11 @@ const update = (archived = false) => {
 
 const selectAction = (e) => {
   const action = e.target.dataset.id;
-  let num = +e.currentTarget.dataset.key;
+  const id = +e.currentTarget.dataset.key;
+  let num = searchTodo(id, todos);
+
   switch (action) {
+
     case 'delete':
       todos.splice(num, 1);
       update();
@@ -45,6 +55,7 @@ const selectAction = (e) => {
       state.elements.name.value = todos[num].name;
       state.elements.category.value = todos[num].category;
       state.elements.content.value = todos[num].content;
+      validData(state.elements.formBtn, state.elements.name, state.elements.content);
       break;
 
     case 'deleteAll':
@@ -64,6 +75,8 @@ const selectAction = (e) => {
 
     case 'create':
       changeShowModal(modal, 'add');
+      state.elements.editForm.reset();
+      validData(state.elements.formBtn, state.elements.name, state.elements.content);
       break;
 
     case 'extract':
