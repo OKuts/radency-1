@@ -13,3 +13,16 @@
   justify-content: center;
   align-items: center;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+label>span {
+  color: crimson;
+  margin-left: 10px;
+}
+
+.noVisible {
+  display: none;
+}
